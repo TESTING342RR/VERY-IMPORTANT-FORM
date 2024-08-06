@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <title>Portfolio</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: #ffffff;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    
+    form {
+      background: rgba(30, 30, 30, 0.9);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      max-width: 400px;
+      width: 100%;
+    }
+    
+    fieldset {
+      border: 1px solid #444;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+    
+    legend {
+      padding: 0 10px;
+      color: #ffd700;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 15px;
+      font-size: 1.1em;
+    }
+    
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="radio"] {
+      background-color: #333;
+      color: #fff;
+      border: 1px solid #555;
+      border-radius: 5px;
+      padding: 10px;
+      width: calc(100% - 20px);
+      font-size: 1em;
+      margin-top: 5px;
+      transition: border-color 0.3s;
+    }
+    
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    input[type="email"]:focus,
+    input[type="radio"]:focus {
+      border-color: #ffd700;
+      outline: none;
+    }
+    
+    input[type="submit"] {
+      background-color: #ffd700;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      padding: 15px 30px;
+      cursor: pointer;
+      font-size: 1.2em;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    
+    input[type="submit"]:hover {
+      background-color: #ffbf00;
+      transform: scale(1.05);
+    }
+    
+    input[type="submit"]:active {
+      transform: scale(1);
+    }
+    
+    ::placeholder {
+      color: #aaa;
+      font-style: italic;
+    }
+
+    .congratulations {
+      font-size: 2em;
+      text-align: center;
+      color: #ffd700;
+      animation: fadeIn 0.5s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div id="formContainer">
+    <form id="userForm">
+      <fieldset>
+        <legend>Personal Info</legend>  
+        <label for="name">Name: <input type="text" id="Name" required /> </label>
+        <label for="age">Age: <input type="number" id="Age" required /> </label>
+        <label for="email">Email: <input type="email" id="Gmail" required /> </label>
+      </fieldset>
+      <fieldset>
+        <legend>Skin Color:</legend>
+        <label for="white">White<input type="radio" id="White" name="skinColor" value="White" checked required /></label>
+        <label for="black">Black (Nigger, Slave)<input type="radio" id="black" name="skinColor" value="Black" required /></label>
+      </fieldset>
+      <fieldset>
+        <legend>Shlong</legend>
+        <label for="size">Size: <input type="number" id="size" placeholder="In CM" required /> </label>
+        <label for="gf">How Many GFs?: <input type="number" id="gf" placeholder="Enter Number" required /> </label>
+      </fieldset>
+      <input type="submit" value="Submit" id="submit" />
+    </form>
+  </div>
+<script>
+  document.getElementById('userForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    let name = document.getElementById('Name').value;
+    let age = document.getElementById('Age').value;
+    let email = document.getElementById('Gmail').value;
+    let skinColor = document.querySelector('input[name="skinColor"]:checked').value;
+    let size = document.getElementById('size').value;
+    let gf = document.getElementById('gf').value;
+
+    console.log("Name: " + name);
+    console.log("Age: " + age);
+    console.log("Email: " + email);
+    console.log("Skin Color: " + skinColor);
+    console.log("Size: " + size);
+    console.log("Number of GFs: " + gf);
+
+    // Store the form container's HTML
+    let formHTML = document.getElementById('formContainer').innerHTML;
+
+    document.body.innerHTML = '<div class="congratulations">Congratulations You Have Small Penis!</div>';
+
+    setTimeout(() => {
+      document.body.innerHTML = '<div id="formContainer">' + formHTML + '</div>';
+      document.getElementById('userForm').addEventListener('submit', arguments.callee);
+    }, 10000);
+  });
+</script>
+</body>
+</html>
